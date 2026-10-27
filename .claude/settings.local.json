@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//Users/dheeraj/.pyenv/versions/**)",
+      "Bash(/Users/dheeraj/.pyenv/versions/3.11.4/bin/python3.11 -m venv /tmp/ledgerly-venv)",
+      "Bash(/tmp/ledgerly-venv/bin/pip install *)",
+      "Bash(/tmp/ledgerly-venv/bin/pytest -q)",
+      "Bash(rsync -a --exclude .venv --exclude __pycache__ --exclude '*.db' backend/ /tmp/ledgerly-backend-orig/)",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p app/integrations/stripe app/integrations/anthropic tests/unit/integrations)",
+      "Bash(touch app/integrations/__init__.py tests/unit/integrations/__init__.py)",
+      "Bash(mkdir -p tests/api tests/unit/services)",
+      "Bash(touch tests/api/__init__.py tests/unit/services/__init__.py)",
+      "Bash(PYTHONDONTWRITEBYTECODE=1 /tmp/ledgerly-venv/bin/pytest -q -p no:cacheprovider)",
+      "Bash(PYTHONDONTWRITEBYTECODE=1 /tmp/ledgerly-venv/bin/pytest -q -p no:cacheprovider tests/unit/services/test_insights_service.py::test_ask_reports_tool_errors_to_claude 2>&1 | grep -B5 \"Error\" | head -30)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "jira-server",
+    "atlassian-mcp",
+    "jira"
+  ]
+}

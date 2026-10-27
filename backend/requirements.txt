@@ -1,0 +1,14 @@
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0,<3.0
+pydantic>=2.7,<3.0
+pydantic-settings>=2.3
+email-validator>=2.1
+python-multipart>=0.0.9
+pyjwt>=2.8
+bcrypt>=4.1
+stripe>=16.0  # uses the StripeClient.v1 namespace
+anthropic>=0.40
+# dev / tests
+pytest>=8.0
+httpx>=0.27
